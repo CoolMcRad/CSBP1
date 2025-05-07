@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>World of Polls</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+</head>
+
+<body>
+    <h1>{{ question.question_text }}</h1>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <form action="{% url 'polls:vote' question.id %}" method="get">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+        {% if question.id in voted_question_ids %}
+        <em>You can only voot <b>once</b></em>
+        {% else %}
+        <input type="submit" value="Vote">
+        {% endif %}
+    </form>
+    <li><a href="{% url 'polls:index' %}">Go back home</a></li>
+    <li><a href="{% url 'polls:all_polls' %}">See all available polls</a></li>
+</body>
+
+<script>
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {window.location.reload();}
+    });
+</script>
+
+</html>

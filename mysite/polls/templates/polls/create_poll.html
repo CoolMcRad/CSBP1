@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>World of Polls</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+
+<body>
+    <h1>Create a poll:</h1>
+    <form id="pollForm" method="post">
+        {% csrf_token %}
+        <label for="question">Question:</label><br>
+        <input type="text" id="question" name="question" required><br><br>
+
+        <div id="choices">
+            <label>Choices:</label><br>
+            <input type="text" name="choices" placeholder="Choice 1" required><br>
+        </div>
+
+        <button type="button" onclick="addChoice()">Add another choice</button><br><br>
+        <button type="submit">Create Poll</button>
+    </form>
+    <li><a href="{% url 'polls:index' %}">Go back home</a></li>
+
+    <script>
+        function addChoice() {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.name = "choices";
+            input.required = true;
+            document.getElementById("choices").appendChild(input);
+            document.getElementById("choices").appendChild(document.createElement("br"));
+        }
+    </script>
+</body>
+
+</html>

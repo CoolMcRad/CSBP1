@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>World of Polls</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+</head>
+
+<body>
+    <h1>World of Polls</h1>
+
+    {% if user.is_authenticated %}
+    <table>
+        <tr>
+            <th style="text-align:right">Username:
+            <td>{{user.username}}
+    </table>
+    <form action='logout/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout" />
+    </form>
+    <form action='create_poll/' method="GET">
+        <input type="submit" value="Create youre own poll" />
+    </form>
+    {% else %}
+    <p>You have to log in to be able to vote.</p>
+    <li><a href="/login">Login</a></li>
+    {% endif %}
+
+
+    {% if latest_question_list %}
+    <ul>
+        <p>Latest 5 polls:</p>
+        {% for question in latest_question_list %}
+        {% if user.is_authenticated %}
+
+        {% if question.id in voted_question_ids %}
+        <li><a class="voted" href="{% url 'polls:results' question.id %}">{{ question.question_text }}</a>
+            <em> Created: {{ question.pub_date }}</em>
+        </li>
+        {% else %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+            <em> Created: {{ question.pub_date }}</em>
+        </li>
+        {% endif %}
+
+        {% else %}
+
+        <li><a href="{% url 'polls:results' question.id %}">{{ question.question_text }}</a>
+            <em> Created: {{ question.pub_date }}</em>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+
+    <li><a href="{% url 'polls:all_polls' %}">See all available polls</a></li>
+    <form method="get" action="{% url 'polls:search' %}">
+        <input type="text" name="q" placeholder="Type here to search" required>
+        <button type="submit">Search</button>
+    </form>
+
+</body>
+
+</html>

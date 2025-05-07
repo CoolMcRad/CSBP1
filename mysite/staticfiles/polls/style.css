@@ -1,0 +1,32 @@
+li a {
+    color: rgb(0, 255, 0);
+}
+
+body {
+    background-color: blue;
+    font-family: 'The-Django', sans-serif;
+    color: white;
+    line-height: 1.5;
+    padding: 4em 1em;
+    margin: 0 auto;
+    max-width: 50vw;
+}
+
+.voted {
+    color: rgb(255, 255, 255);
+}
+
+::selection {
+    background: rgb(0, 0, 0);
+}
+
+.unauthorized {
+    background-color: red;
+    font-family: 'The-Django', sans-serif;
+    color: black;
+    line-height: 1.5;
+    padding: 4em 1em;
+    margin: 0 auto;
+    max-width: 50vw;
+    font-size: larger;
+}

@@ -1,0 +1,83 @@
+li a {
+    color: rgb(0, 255, 0);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+body {
+    background-color: blue;
+    font-family: 'The-Django', sans-serif;
+    color: white;
+    line-height: 1.5;
+    padding: 4em 1em;
+    margin: 0 auto;
+    max-width: 50vw;
+}
+
+input[type="submit"] {
+    background: #00cad8;
+    font-family: "Arial Black", sans-serif;
+    font-size: 0.75rem;
+    position: relative;
+    color: black;
+    line-height: 1rem;
+    margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+}
+
+input[type="text"] {
+    background: #00cad8;
+    font-family: "Arial Black", sans-serif;
+    font-size: 0.75rem;
+    position: relative;
+    color: black;
+    line-height: 1rem;
+    margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+    align-items: center;
+    cursor: text;
+    justify-content: center;
+}
+
+input:active {
+    box-shadow: -2px -2px #818181,-2px 0 #818181, 0 -2px #818181, -4px -4px black, -4px 0 black, 0 -4px black, 2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede, 2px -2px #818181, -2px 2px #e0dede, -4px 2px black, -4px 4px white, 4px 4px white, 4px 0 white, 0 4px white, 2px -4px black, 4px -4px white;
+}
+
+button {
+    background: #00cad8;
+    font-family: "Arial Black", sans-serif;
+    font-size: 0.75rem;
+    position: relative;
+    color: black;
+    line-height: 1rem;
+    margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+}
+
+button:active {
+    box-shadow: -2px -2px #818181,-2px 0 #818181, 0 -2px #818181, -4px -4px black, -4px 0 black, 0 -4px black, 2px 2px #e0dede, 0 2px #e0dede, 2px 0 #e0dede, 2px -2px #818181, -2px 2px #e0dede, -4px 2px black, -4px 4px white, 4px 4px white, 4px 0 white, 0 4px white, 2px -4px black, 4px -4px white;
+}
+
+.voted {
+    color: rgb(255, 255, 255);
+}
+
+::selection {
+    background: rgb(0, 0, 0);
+}
+
+.unauthorized {
+    background-color: red;
+    font-family: 'The-Django', sans-serif;
+    color: black;
+    line-height: 1.5;
+    padding: 4em 1em;
+    margin: 0 auto;
+    max-width: 50vw;
+    font-size: larger;
+}

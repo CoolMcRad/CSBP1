@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>World of Polls</title>
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+
+<body>
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+  <li><a href="/login">Already registered? Click here to login.</a></li>
+  <li><a href="{% url 'polls:index' %}">Go back home</a></li>
+</body>
+
+</html>
