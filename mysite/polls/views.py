@@ -159,7 +159,7 @@ def SearchView(request):
     return render(request, "polls/search.html", context)
 
 
-# @staff_member_required
+#@staff_member_required
 @login_required
 def secret(request):
     return render(request, "polls/secret.html")
