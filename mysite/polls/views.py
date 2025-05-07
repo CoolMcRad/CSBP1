@@ -73,7 +73,7 @@ class RegisterView(generic.CreateView):
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     user = request.user
-
+    # FLAW 5 - Uncomment the two lines below to fix
     #if Vote.objects.filter(user=user, question=question).exists():
     #   return HttpResponseForbidden(render_to_string("polls/unauthorized.html"))
 
@@ -142,7 +142,7 @@ def SearchView(request):
 
     if query:
         # results = Question.objects.filter(question_text__icontains=query)
-        # uncomment line above, then comment from here... --------
+        # FLAW 3 - uncomment line above, then comment/delete from here... >>>>>>>>>>>>>>>>>>>>>>
         with connection.cursor() as cursor:
             cursor.execute(
                 f"SELECT * FROM polls_question WHERE question_text LIKE '%{query}%'"
@@ -151,14 +151,14 @@ def SearchView(request):
         results = [
             {"id": row[0], "question_text": row[1], "pub_date": row[2]} for row in rows
         ]
-        # ...to here --------
+        # ...to here to fix it <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     context = {
         "query": query,
         "question_list": results,
     }
     return render(request, "polls/search.html", context)
 
-
+# FLAW 2 - Replace @login_required with @staff_member_required , or comment line 163 and uncomment line 162 to fix
 #@staff_member_required
 @login_required
 def secret(request):
